@@ -1,0 +1,20 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/PortalAluno/.vs/PortalAluno/v15
+/PortalAluno/PortalAluno.Application/bin/Debug/netstandard2.0
+/PortalAluno/PortalAluno.Application/obj
+/PortalAluno/PortalAluno.Domain/bin/Debug/netstandard2.0
+/PortalAluno/PortalAluno.Domain/obj
+/PortalAluno/PortalAluno.Domain.Core/bin/Debug/netstandard2.0
+/PortalAluno/PortalAluno.Domain.Core/obj
+/PortalAluno/PortalAluno.Infra/bin/Debug/netstandard2.0
+/PortalAluno/PortalAluno.Infra/obj
+/PortalAluno/PortalAluno.Infra.CrossCutting.IoC/bin/Debug/netstandard2.0
+/PortalAluno/PortalAluno.Infra.CrossCutting.IoC/obj
+/PortalAluno/PortalAluno.Presentation/obj
+/PortalAluno/PortalAluno.Services/bin/Debug/netstandard2.0
+/PortalAluno/PortalAluno.Services/obj
+/PortalAluno/PortalAluno.Tests/bin/Debug/netstandard2.0
+/PortalAluno/PortalAluno.Tests/obj
