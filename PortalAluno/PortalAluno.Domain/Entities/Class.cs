@@ -1,5 +1,5 @@
-﻿using PortalAluno.Domain.Core.Entities;
-using System;
+﻿using FluentValidation;
+using PortalAluno.Domain.Core.Entities;
 
 namespace PortalAluno.Domain.Entities
 {
@@ -9,6 +9,11 @@ namespace PortalAluno.Domain.Entities
         {
             Name = name;
             Grade = grade;
+
+            RuleFor(x => x.Name).NotEmpty().WithMessage("É necessário preencher o nome da matéria.");
+            RuleFor(x => x.Grade).ExclusiveBetween(0, 10).WithMessage("A nota deve estar entre 0 e 10.");
+
+            ValidationResult = Validate(this);
         }
 
         public string Name { get; private set; }

@@ -3,7 +3,7 @@ using FluentValidation.Results;
 
 namespace PortalAluno.Domain.Core.ValueObjects
 {
-    public abstract class ValueObject<T> : AbstractValidator<T>
+    public abstract class ValueObject<T> : AbstractValidator<T> where T : class
     {
         protected ValueObject()
         {

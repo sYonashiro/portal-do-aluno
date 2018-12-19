@@ -1,10 +1,17 @@
-﻿namespace PortalAluno.Domain.ValueObjects
+﻿using FluentValidation;
+using PortalAluno.Domain.Core.ValueObjects;
+
+namespace PortalAluno.Domain.ValueObjects
 {
-    public class Email
+    public class Email : ValueObject<Email>
     {
         public Email(string address)
         {
             Address = address;
+
+            RuleFor(x => x.Address).EmailAddress().WithMessage("Email inválido.");
+
+            ValidationResult = Validate(this);
         }
 
         public string Address { get; set; }

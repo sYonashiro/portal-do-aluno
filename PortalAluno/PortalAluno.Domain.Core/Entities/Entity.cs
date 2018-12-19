@@ -4,7 +4,7 @@ using System;
 
 namespace PortalAluno.Domain.Core.Entities
 {
-    public abstract class Entity<T> : AbstractValidator<T>
+    public abstract class Entity<T> : AbstractValidator<T> where T : class
     {
         protected Entity()
         {
