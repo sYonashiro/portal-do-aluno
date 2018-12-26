@@ -19,3 +19,6 @@
 /PortalAluno/PortalAluno.Tests/bin/Debug/netstandard2.0
 /PortalAluno/PortalAluno.Tests/obj
 /PortalAluno/.vs/PortalAluno/DesignTimeBuild
+/PortalAluno/packages
+/PortalAluno/PortalAluno.Infra.Data/bin/Debug
+/PortalAluno/PortalAluno.Infra.Data/obj/Debug

@@ -9,7 +9,10 @@ namespace PortalAluno.Domain.Entities
 {
     public class Student : Entity<Student>
     {
-        private IList<Class> _classes;
+        private readonly IList<Class> _classes;
+
+        // Construtor vazio para o Entity Framework
+        protected Student() { }
 
         public Student(Name name, Address address, Email email, string phone)
         {
@@ -41,7 +44,7 @@ namespace PortalAluno.Domain.Entities
         public string Phone { get; private set; }
         public Email Email { get; private set; }
 
-        public IReadOnlyCollection<Class> Classes => _classes.ToList();
+        public ICollection<Class> Classes => _classes.ToList();
 
         public void AddClass(Class studentClass)
         {

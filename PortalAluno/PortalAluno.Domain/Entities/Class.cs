@@ -5,6 +5,9 @@ namespace PortalAluno.Domain.Entities
 {
     public class Class : Entity<Class>
     {
+        // Construtor vazio para o Entity Framework
+        public Class() { }
+
         public Class(string name, double grade)
         {
             Name = name;
