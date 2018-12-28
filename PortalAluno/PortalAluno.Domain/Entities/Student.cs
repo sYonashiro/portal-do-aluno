@@ -36,7 +36,7 @@ namespace PortalAluno.Domain.Entities
                 .Must(Email => Email.IsValid)
                 .WithMessage(x => !x.Email.IsValid ? Email.ValidationResult?.Errors.First().ErrorMessage : string.Empty);
 
-            ValidationResult = Validate(this);
+            SetValidationResult(Validate(this));
         }
 
         public Name Name { get; private set; }

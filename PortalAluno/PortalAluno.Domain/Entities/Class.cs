@@ -16,7 +16,7 @@ namespace PortalAluno.Domain.Entities
             RuleFor(x => x.Name).NotEmpty().WithMessage("É necessário preencher o nome da matéria.");
             RuleFor(x => x.Grade).ExclusiveBetween(0, 10).WithMessage("A nota deve estar entre 0 e 10.");
 
-            ValidationResult = Validate(this);
+            SetValidationResult(Validate(this));
         }
 
         public string Name { get; private set; }

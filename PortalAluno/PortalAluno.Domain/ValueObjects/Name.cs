@@ -13,7 +13,7 @@ namespace PortalAluno.Domain.ValueObjects
             RuleFor(x => x.FirstName).MinimumLength(2).WithMessage("O primeiro nome deve ter no mínimo 2 caracteres.");
             RuleFor(x => x.LastName).MinimumLength(2).WithMessage("O sobrenome deve ter no mínimo 2 caracteres.");
 
-            ValidationResult = Validate(this);       
+            SetValidationResult(Validate(this));
         }
 
         public string FirstName { get; set; }

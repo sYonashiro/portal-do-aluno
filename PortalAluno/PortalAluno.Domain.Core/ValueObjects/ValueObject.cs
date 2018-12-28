@@ -5,12 +5,17 @@ namespace PortalAluno.Domain.Core.ValueObjects
 {
     public abstract class ValueObject<T> : AbstractValidator<T> where T : class
     {
+        private ValidationResult _validationResult;
+
         protected ValueObject()
         {
-            ValidationResult = new ValidationResult();
+            _validationResult = new ValidationResult();
         }
 
-        public ValidationResult ValidationResult { get; protected set; }
+        public ValidationResult ValidationResult => _validationResult;
         public bool IsValid => ValidationResult.IsValid;
+
+        public void SetValidationResult(ValidationResult validationResult) =>
+            _validationResult = validationResult;
     }
 }

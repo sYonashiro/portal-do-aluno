@@ -21,7 +21,7 @@ namespace PortalAluno.Domain.ValueObjects
             RuleFor(x => x.Neighborhood).NotEmpty().WithMessage("É necessário preencher o campo bairro.");
             RuleFor(x => x.Street).NotEmpty().WithMessage("É necessário preencher o campo rua.");
 
-            ValidationResult = Validate(this);
+            SetValidationResult(Validate(this));
         }
 
         public string Country { get; set; }

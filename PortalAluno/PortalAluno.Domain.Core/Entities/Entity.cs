@@ -6,15 +6,20 @@ namespace PortalAluno.Domain.Core.Entities
 {
     public abstract class Entity<T> : AbstractValidator<T> where T : class
     {
+        private ValidationResult _validationResult;
+
         protected Entity()
         {
             Id = Guid.NewGuid();
-            ValidationResult = new ValidationResult();
+            _validationResult = new ValidationResult();
         }
 
         public Guid Id { get; private set; }
-        public ValidationResult ValidationResult { get; protected set; }
+        public ValidationResult ValidationResult => _validationResult;
 
-        public bool IsValid => ValidationResult.IsValid;
+        public bool IsValid => _validationResult.IsValid;
+
+        public void SetValidationResult(ValidationResult validationResult) =>
+            _validationResult = validationResult;
     }
 }

@@ -11,7 +11,7 @@ namespace PortalAluno.Domain.ValueObjects
 
             RuleFor(x => x.Address).EmailAddress().WithMessage("Email inválido.");
 
-            ValidationResult = Validate(this);
+            SetValidationResult(Validate(this));
         }
 
         public string Address { get; set; }
