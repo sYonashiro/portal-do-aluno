@@ -9,20 +9,18 @@ namespace PortalAluno.Infra.Data.Mappings
         {
             ToTable("Student");
             HasKey(x => x.Id);
-            Property(x => x.Name.FirstName);
-            Property(x => x.Name.LastName);
-            Property(x => x.Address.Country);
-            Property(x => x.Address.State);
-            Property(x => x.Address.City);
-            Property(x => x.Address.Neighborhood);
-            Property(x => x.Address.Building);
-            Property(x => x.Address.Street);
-            Property(x => x.Address.StreetNumber);
+            Property(x => x.Name.FirstName).HasColumnName("FirstName");
+            Property(x => x.Name.LastName).HasColumnName("LastName");
+            Property(x => x.Address.Country).HasColumnName("Country");
+            Property(x => x.Address.State).HasColumnName("State");
+            Property(x => x.Address.City).HasColumnName("City");
+            Property(x => x.Address.Neighborhood).HasColumnName("Neighborhood"); 
+            Property(x => x.Address.Building).HasColumnName("Building");
+            Property(x => x.Address.Street).HasColumnName("Street"); 
+            Property(x => x.Address.StreetNumber).HasColumnName("StreetNumber"); 
             Property(x => x.Phone);
             Property(x => x.Email.Address).HasColumnName("Email");
             HasMany(x => x.Classes);
-
-            Ignore(x => x.CascadeMode);
         }
     }
 }

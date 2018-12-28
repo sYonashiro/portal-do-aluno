@@ -64,6 +64,14 @@
   <ItemGroup>
     <Compile Include="DataContexts\DataContext.cs" />
     <Compile Include="Mappings\StudentMap.cs" />
+    <Compile Include="Migrations\201812281034179_v1.cs" />
+    <Compile Include="Migrations\201812281034179_v1.Designer.cs">
+      <DependentUpon>201812281034179_v1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812281111168_v2.cs" />
+    <Compile Include="Migrations\201812281111168_v2.Designer.cs">
+      <DependentUpon>201812281111168_v2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -71,8 +79,12 @@
     <Folder Include="Repositories\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PortalAluno.Domain.Core\PortalAluno.Domain.Core.csproj">
@@ -83,6 +95,14 @@
       <Project>{163DB15E-D6D6-4CA4-89DD-4E99CF544F59}</Project>
       <Name>PortalAluno.Domain</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201812281034179_v1.resx">
+      <DependentUpon>201812281034179_v1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812281111168_v2.resx">
+      <DependentUpon>201812281111168_v2.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
