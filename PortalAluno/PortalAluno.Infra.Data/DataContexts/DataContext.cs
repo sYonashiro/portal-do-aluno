@@ -20,15 +20,14 @@ namespace PortalAluno.Infra.Data.DataContexts
         {
             #region Ignorar propriedades que não devem ser mapeadas
 
-            modelBuilder.Types<Student>().Configure(c => c.Ignore(p => p.CascadeMode));
             modelBuilder.Types<Name>().Configure(c => c.Ignore(p => p.CascadeMode));
             modelBuilder.Types<Email>().Configure(c => c.Ignore(p => p.CascadeMode));
             modelBuilder.Types<Address>().Configure(c => c.Ignore(p => p.CascadeMode));
-            modelBuilder.Types<Class>().Configure(c => c.Ignore(p => p.CascadeMode));
 
             #endregion
 
             modelBuilder.Configurations.Add(new StudentMap());
+            modelBuilder.Configurations.Add(new ClassMap());
         }
     }
 }

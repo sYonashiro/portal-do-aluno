@@ -21,6 +21,8 @@ namespace PortalAluno.Infra.Data.Mappings
             Property(x => x.Phone);
             Property(x => x.Email.Address).HasColumnName("Email");
             HasMany(x => x.Classes);
+
+            Ignore(x => x.CascadeMode);
         }
     }
 }
