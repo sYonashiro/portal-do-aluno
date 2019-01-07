@@ -4,4 +4,13 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="SimpleInjector" Version="4.4.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PortalAluno.Domain\PortalAluno.Domain.csproj" />
+    <ProjectReference Include="..\PortalAluno.Infra.Data\PortalAluno.Infra.Data.csproj" />
+  </ItemGroup>
+
 </Project>
