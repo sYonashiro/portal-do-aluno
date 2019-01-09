@@ -10,11 +10,10 @@ namespace PortalAluno.Domain.Core.Entities
 
         protected Entity()
         {
-            Id = Guid.NewGuid();
             _validationResult = new ValidationResult();
         }
 
-        public Guid Id { get; private set; }
+        public Guid Id { get; protected set; }
         public ValidationResult ValidationResult => _validationResult;
 
         public bool IsValid => _validationResult.IsValid;

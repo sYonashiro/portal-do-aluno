@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using PortalAluno.Domain.Core.Entities;
+using System;
 
 namespace PortalAluno.Domain.Entities
 {
@@ -8,8 +9,9 @@ namespace PortalAluno.Domain.Entities
         // Construtor vazio para o Entity Framework
         public Class() { }
 
-        public Class(string name, double grade)
+        public Class(Guid id, string name, double grade)
         {
+            Id = id;
             Name = name;
             Grade = grade;
 

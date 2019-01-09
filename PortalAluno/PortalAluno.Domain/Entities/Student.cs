@@ -2,6 +2,7 @@
 using FluentValidation.Results;
 using PortalAluno.Domain.Core.Entities;
 using PortalAluno.Domain.ValueObjects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -13,15 +14,16 @@ namespace PortalAluno.Domain.Entities
 
         // Construtor vazio para o Entity Framework
         protected Student() { }
-
-        public Student(Name name, Address address, Email email, string phone)
+        
+        public Student(Guid id, Name name, Address address, Email email, string phone)
         {
+            Id = id;
             Name = name;
             Address = address;
-            Email = email;
             Phone = phone;
+            Email = email;
             _classes = new List<Class>();
-            
+
             RuleFor(x => x.Phone).Matches("\\(\\d{2}?\\) \\d{3,5}-\\d{4}?").WithMessage("Telefone inválido. O número de telefone deve conter o DDD com 2 números entre parênteses, a primeira parte de 3 a 5 dígitos seguidos de um traço, e a segunda parte deve conter 4 dígitos.");
 
             RuleFor(x => x.Name)

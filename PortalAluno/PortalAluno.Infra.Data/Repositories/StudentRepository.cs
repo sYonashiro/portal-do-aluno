@@ -4,6 +4,7 @@ using PortalAluno.Domain.Queries;
 using PortalAluno.Infra.Data.DataContexts;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 
 namespace PortalAluno.Infra.Data.Repositories
 {
@@ -38,7 +39,7 @@ namespace PortalAluno.Infra.Data.Repositories
 
         public void Update(Student student)
         {
-            throw new NotImplementedException();
+            _context.Entry(student).State = EntityState.Modified;
         }
     }
 }
