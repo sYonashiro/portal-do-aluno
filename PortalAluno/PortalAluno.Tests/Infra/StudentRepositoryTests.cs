@@ -33,14 +33,14 @@ namespace PortalAluno.Tests.Infra
         }
 
         [Fact]
-        public void ShouldReturnTrueWhenStudentIsAdded()
+        public void ShouldBeTrueWhenStudentIsAdded()
         {
             _studentRepository.Add(_student);
             Assert.True(_uow.Commit());
         }
 
         [Fact]
-        public void ShouldReturnTrueWhenStudentIsUpdated()
+        public void ShouldBeTrueWhenStudentIsUpdated()
         {
             _name = new Name("Fulano", "De Tal");
             _address = new Address("Brasil", "SP", "Sorocaba", "Teste", "Rua A", 50, "");
@@ -48,6 +48,32 @@ namespace PortalAluno.Tests.Infra
             _student = new Student(Guid.Parse("bd2dd14b-8634-499c-a478-554b626b79f6"), _name, _address, _email, "(15)98011-1551");
 
             _studentRepository.Update(_student);
+            Assert.True(_uow.Commit());
+        }
+
+        [Fact]
+        public void ShouldReturnOneLineWhenReceiveValidId()
+        {
+            var student = _studentRepository.GetById(Guid.Parse("BD2DD14B-8634-499C-A478-554B626B79F6"));
+            Assert.NotNull(student);
+        }
+
+        [Fact]
+        public void ShouldReturnNothingWhenReceiveInvalidId()
+        {
+            var student = _studentRepository.GetById(Guid.Parse("79414294-5c91-452b-8944-f83867af3185"));
+            Assert.Null(student);
+        }
+
+        [Fact]
+        public void ShouldBeTrueWhenStudentIsDeleted()
+        {
+            _name = new Name("Fulano", "De Tal");
+            _address = new Address("Brasil", "SP", "Sorocaba", "Teste", "Rua A", 50, "");
+            _email = new Email("teste@teste.com");
+            _student = new Student(Guid.Parse("bd2dd14b-8634-499c-a478-554b626b79f6"), _name, _address, _email, "(15)98011-1551");
+
+            _studentRepository.Remove(_student);
             Assert.True(_uow.Commit());
         }
     }

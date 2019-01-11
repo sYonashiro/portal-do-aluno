@@ -9,7 +9,7 @@ namespace PortalAluno.Domain.Interfaces
     {
         void Add(Student student);
         void Update(Student student);
-        void Remove(Guid id);
+        void Remove(Student student);
         IEnumerable<GetStudentQueryResult> GetAll();
         GetStudentQueryResult GetById(Guid id);
     }

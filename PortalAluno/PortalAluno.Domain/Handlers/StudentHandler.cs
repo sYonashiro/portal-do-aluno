@@ -25,7 +25,7 @@ namespace PortalAluno.Domain.Handlers
             var address = new Address(command.Country, command.State, command.City, command.Neighborhood, command.Street, command.StreetNumber, command.Building);
             var email = new Email(command.EmailAddress);
 
-            var student = new Student(name, address, email, command.Phone);
+            var student = new Student(command.Id, name, address, email, command.Phone);
 
             if (!student.IsValid)
                 return new CommandResult(false, student.ValidationResult.Errors.First().ErrorMessage);
@@ -38,9 +38,23 @@ namespace PortalAluno.Domain.Handlers
             return new CommandResult(false, "Erro ao tentar salvar o aluno!");
         }
 
-        public void Handle(UpdateStudentCommand command)
+        public CommandResult Handle(UpdateStudentCommand command)
         {
-            throw new System.NotImplementedException();
+            var name = new Name(command.FirstName, command.LastName);
+            var address = new Address(command.Country, command.State, command.City, command.Neighborhood, command.Street, command.StreetNumber, command.Building);
+            var email = new Email(command.EmailAddress);
+
+            var student = new Student(command.Id, name, address, email, command.Phone);
+
+            if (!student.IsValid)
+                return new CommandResult(false, student.ValidationResult.Errors.First().ErrorMessage);
+
+            _studentRepository.Update(student);
+
+            if (_uow.Commit())
+                return new CommandResult(true, "Estudante atualizado com sucesso!");
+
+            return new CommandResult(false, "Erro ao tentar atualizar o aluno!");
         }
 
         public void Handle(RemoveStudentCommand command)

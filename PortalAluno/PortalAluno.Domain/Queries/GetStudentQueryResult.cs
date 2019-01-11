@@ -21,7 +21,7 @@ namespace PortalAluno.Domain.Queries
         public string Phone { get; set; }
 
         // Email
-        public string EmailAddress { get; set; }
+        public string Email { get; set; }
 
         public IEnumerable<GetClassQueryResult> Classes { get; set; }
     }

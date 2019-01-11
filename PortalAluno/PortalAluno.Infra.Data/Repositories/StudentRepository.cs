@@ -5,6 +5,9 @@ using PortalAluno.Infra.Data.DataContexts;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.SqlClient;
+using Dapper;
+using System.Linq;
 
 namespace PortalAluno.Infra.Data.Repositories
 {
@@ -24,17 +27,49 @@ namespace PortalAluno.Infra.Data.Repositories
         
         public IEnumerable<GetStudentQueryResult> GetAll()
         {
-            throw new NotImplementedException();
+            using (SqlConnection connection = new SqlConnection(@"Server=DEVSQL;Database=PortalAluno;User Id=sa;Password=saadmin"))
+            {
+                return connection
+                    .Query<GetStudentQueryResult>(@" SELECT [FirstName]
+                                                           ,[LastName]
+                                                           ,[Country]
+                                                           ,[State]
+                                                           ,[City]
+                                                           ,[Neighborhood]
+                                                           ,[Street]
+                                                           ,[StreetNumber]
+                                                           ,[Building]
+                                                           ,[Phone]
+                                                           ,[Email]
+                                                     FROM [Student] ");
+            }
         }
 
         public GetStudentQueryResult GetById(Guid id)
         {
-            throw new NotImplementedException();
+            using (SqlConnection connection = new SqlConnection(@"Server=DEVSQL;Database=PortalAluno;User Id=sa;Password=saadmin"))
+            {
+                return connection
+                    .Query<GetStudentQueryResult>($@" SELECT [FirstName]
+                                                           ,[LastName]
+                                                           ,[Country]
+                                                           ,[State]
+                                                           ,[City]
+                                                           ,[Neighborhood]
+                                                           ,[Street]
+                                                           ,[StreetNumber]
+                                                           ,[Building]
+                                                           ,[Phone]
+                                                           ,[Email]
+                                                      FROM [Student] 
+                                                      WHERE [Id] = '{id}' ")
+                    .FirstOrDefault();
+            }
         }
 
-        public void Remove(Guid id)
+        public void Remove(Student student)
         {
-            throw new NotImplementedException();
+            _context.Entry(student).State = EntityState.Deleted;
         }
 
         public void Update(Student student)
