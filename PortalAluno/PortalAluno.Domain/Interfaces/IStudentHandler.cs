@@ -7,6 +7,6 @@ namespace PortalAluno.Domain.Interfaces
     {
         CommandResult Handle(AddNewStudentCommand command);
         CommandResult Handle(UpdateStudentCommand command);
-        void Handle(RemoveStudentCommand command);
+        CommandResult Handle(RemoveStudentCommand command);
     }
 }

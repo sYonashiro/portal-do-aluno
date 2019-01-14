@@ -57,9 +57,21 @@ namespace PortalAluno.Domain.Handlers
             return new CommandResult(false, "Erro ao tentar atualizar o aluno!");
         }
 
-        public void Handle(RemoveStudentCommand command)
+        public CommandResult Handle(RemoveStudentCommand command)
         {
-            throw new System.NotImplementedException();
+            var result = _studentRepository.GetById(command.Id);
+
+            var name = new Name(result.FirstName, result.LastName);
+            var address = new Address(result.Country, result.State, result.City, result.Neighborhood, result.Street, result.StreetNumber, result.Building);
+            var email = new Email(result.Email);
+
+            var student = new Student(command.Id, name, address, email, result.Phone);
+            _studentRepository.Remove(student);
+
+            if (_uow.Commit())
+                return new CommandResult(true, "Estudante removido com sucesso!");
+
+            return new CommandResult(false, "Erro ao tentar remover o aluno!");
         }
     }
 }
