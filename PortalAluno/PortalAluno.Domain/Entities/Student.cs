@@ -24,7 +24,7 @@ namespace PortalAluno.Domain.Entities
             Email = email;
             _classes = new List<Class>();
 
-            RuleFor(x => x.Phone).Matches("\\(\\d{2}?\\) \\d{3,5}-\\d{4}?").WithMessage("Telefone inválido. O número de telefone deve conter o DDD com 2 números entre parênteses, a primeira parte de 3 a 5 dígitos seguidos de um traço, e a segunda parte deve conter 4 dígitos.");
+            RuleFor(x => x.Phone).Matches("\\(\\d{2}?\\)\\d{3,5}-\\d{4}?").WithMessage("Telefone inválido. O número de telefone deve conter o DDD com 2 números entre parênteses, a primeira parte de 3 a 5 dígitos seguidos de um traço, e a segunda parte deve conter 4 dígitos.");
 
             RuleFor(x => x.Name)
                 .Must(Name => Name.IsValid)
